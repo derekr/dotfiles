@@ -1,0 +1,251 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "indent_guides": {
+    "enabled": false
+  },
+  "gutter": {
+    "runnables": false,
+    "folds": false,
+    "min_line_number_digits": 0
+  },
+  "text_rendering_mode": "platform_default",
+  "vim": {
+    "toggle_relative_line_numbers": false,
+  },
+  "buffer_font_family": "Maple Mono NF CN",
+  "colorize_brackets": true,
+  "bottom_dock_layout": "full",
+  "title_bar": {
+    "show_sign_in": false,
+  },
+  "expand_excerpt_lines": 7,
+  "minimum_contrast_for_highlights": 50.0,
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+    },
+    "enabled_in_text_threads": false,
+  },
+  "icon_theme": "Catppuccin Frappé",
+  "centered_layout": {
+    "left_padding": 0.2,
+    "right_padding": 0.2,
+  },
+  "features": {
+    "edit_prediction_provider": "zed",
+  },
+  "auto_update_extensions": {
+    "prisma": false,
+  },
+  "language_models": {
+    "anthropic": {},
+  },
+  "status_bar": {
+    "experimental.show": false,
+  },
+  "project_panel": {
+    "default_width": 400,
+    "entry_spacing": "comfortable",
+    "dock": "right",
+    "hide_root": true,
+    "starts_open": false,
+    "auto_fold_dirs": false,
+    "indent_guides": {
+      "show": "never",
+    },
+  },
+  "outline_panel": {
+    "default_width": 300,
+    "indent_guides": {
+      "show": "never",
+    },
+  },
+  "theme": "Alabaster Dark",
+  "theme_overrides": {
+    "Alabaster Dark": {
+      "border": "#00000000",
+      "border.variant": "#00000000",
+      "border.focused": "#00000000",
+      "border.selected": "#00000000",
+      "border.transparent": "#00000000",
+      "border.disabled": "#00000000",
+      "pane.focused_border": "#00000000",
+      "background": "#282828",
+      "editor.background": "#282828",
+      "editor.gutter.background": "#282828",
+      "panel.background": "#282828",
+      "panel.focused_border": "#00000000",
+      "tab_bar.background": "#282828",
+      "toolbar.background": "#282828",
+      "title_bar.background": "#282828",
+      "status_bar.background": "#282828",
+      "surface.background": "#282828",
+      "elevated_surface.background": "#1d2021",
+      "terminal.background": "#1d2021",
+      "terminal.ansi.black": "#282828",
+      "terminal.ansi.red": "#cc241d",
+      "terminal.ansi.green": "#98971a",
+      "terminal.ansi.yellow": "#d79921",
+      "terminal.ansi.blue": "#458588",
+      "terminal.ansi.magenta": "#b16286",
+      "terminal.ansi.cyan": "#689d6a",
+      "terminal.ansi.white": "#a89984",
+      "terminal.ansi.bright_black": "#928374",
+      "terminal.ansi.bright_red": "#fb4934",
+      "terminal.ansi.bright_green": "#b8bb26",
+      "terminal.ansi.bright_yellow": "#fabd2f",
+      "terminal.ansi.bright_blue": "#83a598",
+      "terminal.ansi.bright_magenta": "#d3869b",
+      "terminal.ansi.bright_cyan": "#8ec07c",
+      "terminal.ansi.bright_white": "#ebdbb2",
+      "drop_target.background": "#3c3836",
+      "element.background": "#3c3836",
+      "element.hover": "#504945",
+      "element.selected": "#504945",
+      "ghost_element.hover": "#3c3836",
+      "ghost_element.selected": "#504945",
+      "text": "#ebdbb2",
+      "text.muted": "#a89984",
+      "text.placeholder": "#7c6f64",
+      "scrollbar.track.border": "#00000000",
+      "scrollbar.thumb.background": "#3c383680",
+      "syntax": {
+        "string": {
+          "color": "#b8bb26",
+          "background_color": "#32361a"
+        },
+        "comment": {
+          "color": "#fabd2f",
+          "background_color": "#3d3522"
+        },
+        "comment.doc": {
+          "color": "#fabd2f",
+          "background_color": "#3d3522"
+        },
+        "function.definition": {
+          "color": "#83a598",
+          "background_color": "#2e3b3f"
+        },
+        "type.definition": {
+          "color": "#83a598",
+          "background_color": "#2e3b3f"
+        },
+        "constant": {
+          "color": "#d3869b"
+        },
+        "number": {
+          "color": "#d3869b"
+        },
+        "boolean": {
+          "color": "#d3869b"
+        },
+        "punctuation": {
+          "color": "#7c6f64"
+        },
+        "operator": {
+          "color": "#7c6f64"
+        }
+      }
+    },
+    "Alabaster BG": {
+      "syntax": {
+        "string": {
+          "color": "#567a45",
+          "background_color": "#e8f5d8",
+        },
+        "comment": {
+          "color": "#6D661",
+          "background_color": "#FFFAB4",
+        },
+        "function.definition": {
+          "color": "#245877",
+          "background_color": "#DBF1FD",
+        },
+        "@function.special.definition": {
+          "color": "#245877",
+          "background_color": "#DBF1FD",
+        },
+        "operator": {
+          "color": "#aaa",
+        },
+        "punctuation": {
+          "color": "#aaa",
+        },
+      },
+    },
+  },
+  "ui_font_size": 13.0,
+  "terminal": {
+    "font_family": "Hack Nerd Font Propo",
+  },
+  "buffer_font_size": 14.0,
+  "hard_tabs": false,
+  "tab_size": 2,
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
+  "tab_bar": {
+    "show": false,
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false,
+    "selections_menu": false,
+  },
+  "wrap_guides": [90],
+  "show_wrap_guides": true,
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+    },
+  },
+  "TypeScript": {
+    "language_servers": ["!typescript-language-server", "vtsls", ".."],
+  },
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-latest",
+    },
+    "model_parameters": [],
+  },
+  "file_scan_exclusions": [
+    "**/build",
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+  ],
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.5,
+    "magnification": 1.2,
+    "border_size": 1.2,
+  },
+  "file_finder": {
+    "modal_max_width": "large",
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "format": {
+            "singleQuote": true,
+          },
+        },
+      },
+    },
+  },
+}

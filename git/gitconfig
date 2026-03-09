@@ -1,0 +1,36 @@
+[user]
+	name = Derek Reynolds
+	email = derekr@users.noreply.github.com
+[core]
+	pager = delta
+	editor = nvim
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[alias]
+	st = status
+	amend = commit --amend --no-edit
+	a = commit --amend --no-edit
+	co = checkout
+	br = branch
+	cp = cherry-pick
+	rb = pull --rebase
+	rbu = pull --rebase upstream main
+	logo = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ (%cn)" --decorate
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
