@@ -93,6 +93,13 @@ fi
 echo "==> Applying macOS defaults..."
 bash "$DOTFILES/macos/defaults.sh"
 
+# --- Work bootstrap (optional) ---
+WORK_DOTFILES="$HOME/dev/dotfiles-work"
+if [ -f "$WORK_DOTFILES/install.sh" ]; then
+  echo "==> Running work bootstrap..."
+  bash "$WORK_DOTFILES/install.sh"
+fi
+
 # --- Manual steps ---
 echo ""
 echo "==> Done! Manual steps remaining:"
