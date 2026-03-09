@@ -51,6 +51,8 @@ cask "google-chrome-canary"
 
 # --- Fonts ---
 cask "font-jetbrains-mono-nerd-font"  # primary terminal/editor font with icon glyphs
+cask "font-hack-nerd-font"            # zed terminal font (Hack Nerd Font Propo)
+cask "font-maple-mono-nf-cn"          # zed buffer font (Maple Mono NF CN)
 cask "font-monaspace"                 # variable-width coding font family by GitHub
 
 # --- Apps ---
