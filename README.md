@@ -14,10 +14,17 @@ Personal dev environment for macOS. One script to go from a fresh machine to a w
 
 ## Install
 
+One-liner for a fresh machine (no git required):
+
 ```bash
-git clone git@github.com:derekr/dotfiles.git ~/dev/dotfiles
-cd ~/dev/dotfiles
-./install.sh
+bash <(curl -fsSL https://raw.githubusercontent.com/derekr/dotfiles/main/bootstrap.sh)
+```
+
+Or if you already have git:
+
+```bash
+git clone git@github.com:derekr/dotfiles.git ~/dev/github.com/derekr/dotfiles
+~/dev/github.com/derekr/dotfiles/install.sh
 ```
 
 The install script will:
