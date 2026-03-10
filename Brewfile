@@ -59,3 +59,4 @@ cask "font-monaspace"                 # variable-width coding font family by Git
 cask "raycast"                     # Spotlight replacement with extensions and snippets
 cask "tableplus"                   # GUI database client
 cask "1password"                   # password manager
+cask "linear-linear"               # project management and issue tracking
