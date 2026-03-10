@@ -8,12 +8,12 @@
 // from the command palette or from `Zed` application menu.
 {
   "indent_guides": {
-    "enabled": false
+    "enabled": false,
   },
   "gutter": {
     "runnables": false,
     "folds": false,
-    "min_line_number_digits": 0
+    "min_line_number_digits": 0,
   },
   "text_rendering_mode": "platform_default",
   "vim": {
@@ -28,6 +28,7 @@
   "expand_excerpt_lines": 7,
   "minimum_contrast_for_highlights": 50.0,
   "edit_predictions": {
+    "provider": "zed",
     "mode": "subtle",
     "copilot": {
       "proxy": null,
@@ -39,9 +40,6 @@
   "centered_layout": {
     "left_padding": 0.2,
     "right_padding": 0.2,
-  },
-  "features": {
-    "edit_prediction_provider": "zed",
   },
   "auto_update_extensions": {
     "prisma": false,
@@ -121,40 +119,40 @@
       "syntax": {
         "string": {
           "color": "#b8bb26",
-          "background_color": "#32361a"
+          "background_color": "#32361a",
         },
         "comment": {
           "color": "#fabd2f",
-          "background_color": "#3d3522"
+          "background_color": "#3d3522",
         },
         "comment.doc": {
           "color": "#fabd2f",
-          "background_color": "#3d3522"
+          "background_color": "#3d3522",
         },
         "function.definition": {
           "color": "#83a598",
-          "background_color": "#2e3b3f"
+          "background_color": "#2e3b3f",
         },
         "type.definition": {
           "color": "#83a598",
-          "background_color": "#2e3b3f"
+          "background_color": "#2e3b3f",
         },
         "constant": {
-          "color": "#d3869b"
+          "color": "#d3869b",
         },
         "number": {
-          "color": "#d3869b"
+          "color": "#d3869b",
         },
         "boolean": {
-          "color": "#d3869b"
+          "color": "#d3869b",
         },
         "punctuation": {
-          "color": "#7c6f64"
+          "color": "#7c6f64",
         },
         "operator": {
-          "color": "#7c6f64"
-        }
-      }
+          "color": "#7c6f64",
+        },
+      },
     },
     "Alabaster BG": {
       "syntax": {
