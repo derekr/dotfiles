@@ -22,7 +22,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # --- Brew packages ---
 echo "==> Installing Brew packages..."
-brew bundle --file="$DOTFILES/Brewfile" --no-lock
+brew bundle install --file "$DOTFILES/Brewfile"
 
 # --- SSH ---
 echo "==> Setting up SSH..."
