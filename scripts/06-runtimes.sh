@@ -13,4 +13,4 @@ mise install --yes
 
 echo "    Installing global pnpm packages..."
 pnpm config set global-bin-dir "$HOME/.local/bin"
-pnpm install -g @anthropic-ai/claude-code wt
+pnpm install -g @anthropic-ai/claude-code @johnlindquist/worktree
