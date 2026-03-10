@@ -12,10 +12,11 @@ fi
 
 echo "==> Downloading dotfiles..."
 mkdir -p "$(dirname "$DOTFILES_DIR")"
-curl -fsSL "https://github.com/$REPO/archive/main.tar.gz" | tar xz -C "$(dirname "$DOTFILES_DIR")"
+curl -fsSL --retry 3 --retry-delay 5 "https://github.com/$REPO/archive/main.tar.gz" | tar xz -C "$(dirname "$DOTFILES_DIR")"
 mv "$(dirname "$DOTFILES_DIR")/dotfiles-main" "$DOTFILES_DIR"
 
 echo "==> Running install..."
+cd "$DOTFILES_DIR"
 bash "$DOTFILES_DIR/install.sh"
 
 # Convert to a proper git repo now that git is available

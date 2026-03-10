@@ -47,7 +47,7 @@ cask "orbstack"                    # lightweight Docker & Linux VM runtime for m
 
 # --- Browsers ---
 cask "google-chrome"
-cask "google-chrome-canary"
+cask "google-chrome@canary"
 
 # --- Fonts ---
 cask "font-jetbrains-mono-nerd-font"  # primary terminal/editor font with icon glyphs
