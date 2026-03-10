@@ -1,15 +1,55 @@
 #!/usr/bin/env bash
 
-DOTFILES="$(cd "$(dirname "$0")" && pwd)"
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FAILURES=()
+DRY=0
+FILTER=""
 
 export PATH="$HOME/.local/bin:$PATH"
 
-run_script() {
-  local script="$1"
-  local name
-  name="$(basename "$script" .sh | sed 's/^[0-9]*-//')"
-  echo "==> $name"
+while [[ $# -gt 0 ]]; do
+  if [[ "$1" == "dry" ]]; then
+    DRY=1
+  else
+    FILTER="$1"
+  fi
+  shift
+done
+
+log() {
+  if [[ $DRY -eq 1 ]]; then
+    echo "  [dry run] $@"
+  else
+    echo "  $@"
+  fi
+}
+
+execute() {
+  log "$@"
+  if [[ $DRY -eq 1 ]]; then
+    return
+  fi
+  "$@"
+}
+
+echo "==> Installing from $DOTFILES"
+echo ""
+
+scripts=$(find "$DOTFILES/scripts" -mindepth 1 -maxdepth 1 -type f -perm +111 | sort)
+
+for script in $scripts; do
+  name="$(basename "$script")"
+
+  if [[ -n "$FILTER" ]] && ! echo "$name" | grep -q "$FILTER"; then
+    log "filtering $name"
+    continue
+  fi
+
+  log "running $name"
+  if [[ $DRY -eq 1 ]]; then
+    continue
+  fi
+
   if bash "$script"; then
     echo ""
   else
@@ -17,23 +57,16 @@ run_script() {
     echo ""
     FAILURES+=("$name")
   fi
-}
-
-echo "==> Installing from $DOTFILES"
-echo ""
-
-for script in "$DOTFILES"/scripts/[0-9]*.sh; do
-  run_script "$script"
 done
 
 # --- Summary ---
-if [ ${#FAILURES[@]} -gt 0 ]; then
+if [[ ${#FAILURES[@]} -gt 0 ]]; then
   echo "==> Finished with failures:"
   for f in "${FAILURES[@]}"; do
     echo "    - $f"
   done
   echo ""
-  echo "  Re-run individual scripts with: bash scripts/<script>.sh"
+  echo "  Re-run a single step: ./install.sh <filter>"
   echo ""
 fi
 
