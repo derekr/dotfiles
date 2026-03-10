@@ -12,11 +12,6 @@ fish_add_path ~/.local/bin
 
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
-# pnpm
-set -gx PNPM_HOME "$HOME/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
 
 # OrbStack
 source ~/.orbstack/shell/init.fish 2>/dev/null; or true

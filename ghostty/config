@@ -1,6 +1,7 @@
 theme = Alabaster Dark
 auto-update-channel = tip
 shell-integration = fish
+font-family = JetBrainsMono Nerd Font
 font-size = 16
 background-blur-radius = 20
 keybind = ctrl+h=goto_split:left

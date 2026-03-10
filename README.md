@@ -27,23 +27,34 @@ git clone git@github.com:derekr/dotfiles.git ~/dev/github.com/derekr/dotfiles
 ~/dev/github.com/derekr/dotfiles/install.sh
 ```
 
-The install script will:
+## Scripts
 
-1. Install Xcode CLI tools (if needed)
-2. Install Homebrew and all packages from `Brewfile`
-3. Generate an SSH key and prompt you to add it to GitHub
-4. Symlink all config files to their expected locations
-5. Install fish plugins (fisher + fzf.fish)
-6. Install runtimes via mise (node, go, python)
-7. Install global npm packages (claude-code, wt)
-8. Set fish as default shell
-9. Apply macOS system defaults
+The install runs numbered scripts in order. Each can also be run individually:
+
+```
+scripts/01-xcode.sh     # Xcode CLI tools
+scripts/02-brew.sh      # Homebrew and Brewfile packages
+scripts/03-ssh.sh       # SSH key generation + GitHub auth via gh
+scripts/04-symlinks.sh  # Symlink all config files
+scripts/05-fish.sh      # Fish plugins and default shell
+scripts/06-runtimes.sh  # mise runtimes (node, go, python) + global pnpm packages
+scripts/07-macos.sh     # macOS system preferences
+scripts/08-work.sh      # Optional work bootstrap (if ~/dev/dotfiles-work exists)
+```
+
+Re-run a single step:
+
+```bash
+bash scripts/06-runtimes.sh
+```
 
 ## Structure
 
 ```
 Brewfile              # Homebrew packages and casks
-install.sh            # Bootstrap script
+install.sh            # Orchestrator — runs scripts/ in order
+bootstrap.sh          # One-liner entry point for fresh machines
+scripts/              # Individual install steps (re-runnable)
 fish/config.fish      # Fish shell config, aliases, functions
 ghostty/              # Ghostty terminal config, shaders, themes
 git/gitconfig         # Git config with delta and aliases
@@ -60,4 +71,5 @@ bin/tmux-sessionizer  # Tmux project switcher (ctrl-f)
 
 1. Restart your terminal
 2. `atuin login`
-3. Sign into Chrome / Chrome Canary
+3. Install Zed extensions: Alabaster theme
+4. Sign into Chrome / Chrome Canary
