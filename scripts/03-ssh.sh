@@ -5,7 +5,8 @@ DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
-ln -sf "$DOTFILES/ssh/config" ~/.ssh/config
+rm -f ~/.ssh/config
+cp "$DOTFILES/ssh/config" ~/.ssh/config
 chmod 600 ~/.ssh/config
 
 if [ ! -f ~/.ssh/id_ed25519 ]; then
