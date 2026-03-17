@@ -3,10 +3,11 @@ set -e
 
 DOTFILES_DIR="$HOME/dev/github.com/derekr/dotfiles"
 REPO="derekr/dotfiles"
+EXTRA_ARGS=("$@")
 
 if [ -d "$DOTFILES_DIR" ]; then
   echo "==> $DOTFILES_DIR already exists, running install..."
-  bash "$DOTFILES_DIR/install.sh"
+  bash "$DOTFILES_DIR/install.sh" "${EXTRA_ARGS[@]}"
   exit 0
 fi
 
@@ -17,7 +18,7 @@ mv "$(dirname "$DOTFILES_DIR")/dotfiles-main" "$DOTFILES_DIR"
 
 echo "==> Running install..."
 cd "$DOTFILES_DIR"
-bash "$DOTFILES_DIR/install.sh"
+bash "$DOTFILES_DIR/install.sh" "${EXTRA_ARGS[@]}"
 
 # Convert to a proper git repo now that git is available
 echo "==> Converting to git clone..."

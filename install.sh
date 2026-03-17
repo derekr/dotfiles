@@ -4,17 +4,23 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FAILURES=()
 DRY=0
 FILTER=""
+WORK_REPO=""
 
 export PATH="$HOME/.local/bin:$PATH"
 
 while [[ $# -gt 0 ]]; do
   if [[ "$1" == "dry" ]]; then
     DRY=1
+  elif [[ "$1" == "--work" ]]; then
+    shift
+    WORK_REPO="$1"
   else
     FILTER="$1"
   fi
   shift
 done
+
+export WORK_REPO
 
 log() {
   if [[ $DRY -eq 1 ]]; then
