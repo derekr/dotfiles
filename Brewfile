@@ -60,3 +60,5 @@ cask "raycast"                     # Spotlight replacement with extensions and s
 cask "tableplus"                   # GUI database client
 cask "1password"                   # password manager
 cask "linear-linear"               # project management and issue tracking
+cask "obsidian"                    # markdown knowledge base and notes
+cask "superwhisper"                # voice-to-text using local AI
