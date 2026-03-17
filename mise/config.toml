@@ -1,3 +1,8 @@
+[env]
+EDITOR = "zed-preview"
+PNPM_HOME = "{{env.HOME}}/Library/pnpm"
+_.path = ["{{env.PNPM_HOME}}"]
+
 [tools]
 node = "lts"
 pnpm = "latest"
