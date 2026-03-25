@@ -22,10 +22,14 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Trackpad: tap to click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: enable three-finger drag (window move)
+# Trackpad: enable three-finger drag (Accessibility > Pointer Control > Trackpad Options)
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool true
 
 # Screenshots: save to ~/Screenshots
 mkdir -p "$HOME/Screenshots"
