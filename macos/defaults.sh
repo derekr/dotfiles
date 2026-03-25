@@ -20,6 +20,9 @@ defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
+# Trackpad: tracking speed
+defaults write -g com.apple.trackpad.scaling -float 2
+
 # Trackpad: tap to click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
