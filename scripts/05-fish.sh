@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Install fish plugins and set as default shell
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 echo "    Installing fish plugins..."
 fish -c "
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source

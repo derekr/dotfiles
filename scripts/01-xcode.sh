@@ -8,5 +8,9 @@ fi
 
 echo "    Installing Xcode CLI tools..."
 xcode-select --install
-echo "    Waiting for Xcode CLI tools to finish. Re-run install.sh after."
-exit 1
+
+echo "    Waiting for Xcode CLI tools to finish (this can take a while)..."
+until xcode-select -p &>/dev/null; do
+  sleep 10
+done
+echo "    Xcode CLI tools installed"
