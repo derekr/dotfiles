@@ -1,3 +1,13 @@
 [user]
 	email = derek.reynolds@basedash.com
 	name = Derek Reynolds
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[safe]
+	directory = /Users/drk/dev/github.com/basedash/chartsnew/charts/.claude/worktrees/feat-agent-sandbox/.sandcastle/worktrees/dash-3984-security-add-cache-prevention-headers-to-db-password
+	directory = /Users/drk/dev/github.com/basedash/chartsnew/charts/.sandcastle/worktrees/dash-3772-table-chart-columns-do-not-render-from-query-results
+	directory = /Users/drk/dev/github.com/basedash/chartsnew/charts/.sandcastle/worktrees/dash-4069-yyyy-mm-period-strings-on-chart-x-axis-trigger-utclocal
