@@ -41,6 +41,9 @@ copy_file "$DOTFILES/lazygit/config.yml"                          ~/.config/lazy
 # mise
 copy_file "$DOTFILES/mise/config.toml"                            ~/.config/mise/config.toml
 
+# nvim
+copy_file "$DOTFILES/nvim/init.lua"                               ~/.config/nvim/init.lua
+
 # bin
 copy_file "$DOTFILES/bin/tmux-sessionizer"                        ~/.local/bin/tmux-sessionizer
 chmod +x ~/.local/bin/tmux-sessionizer
