@@ -7,6 +7,20 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "helix_mode": true,
+  "cli_default_open_behavior": "existing_window",
+  "diff_view_style": "unified",
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "indent_guides": {
     "enabled": false,
   },
@@ -62,12 +76,13 @@
     },
   },
   "outline_panel": {
+    "dock": "left",
     "default_width": 300,
     "indent_guides": {
       "show": "never",
     },
   },
-  "theme": "Alabaster Dark",
+  "theme": "Alabaster BG",
   "theme_overrides": {
     "Alabaster Dark": {
       "border": "#00000000",
@@ -188,7 +203,7 @@
   "buffer_font_size": 14.0,
   "hard_tabs": false,
   "tab_size": 2,
-  "vim_mode": true,
+  "vim_mode": false,
   "relative_line_numbers": "enabled",
   "tab_bar": {
     "show": false,
@@ -210,6 +225,7 @@
     "language_servers": ["!typescript-language-server", "vtsls", ".."],
   },
   "agent": {
+    "dock": "left",
     "inline_assistant_model": {
       "provider": "anthropic",
       "model": "claude-sonnet-4-5-latest",
