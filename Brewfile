@@ -1,3 +1,6 @@
+# --- Taps ---
+tap "anomalyco/tap"
+
 # --- Git ---
 brew "git"                         # version control
 brew "git-delta"                   # better diff viewer with syntax highlighting
@@ -62,3 +65,6 @@ cask "1password"                   # password manager
 cask "linear-linear"               # project management and issue tracking
 cask "obsidian"                    # markdown knowledge base and notes
 cask "superwhisper"                # voice-to-text using local AI
+cask "tailscale"                   # mesh VPN and private networking
+cask "claude-code"                 # Anthropic's terminal AI coding assistant
+brew "anomalyco/tap/opencode"      # open source AI coding agent
