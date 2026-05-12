@@ -1,10 +1,18 @@
 [env]
 EDITOR = "zed-preview"
-PNPM_HOME = "{{env.HOME}}/Library/pnpm"
-_.path = ["{{env.PNPM_HOME}}"]
 
 [tools]
 node = "lts"
-pnpm = "latest"
+pnpm = "11"
 go = "latest"
+lua-language-server = "latest"
+taplo = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:typescript" = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:portless" = "latest"
 python = "latest"
+
+[settings]
+experimental = true
