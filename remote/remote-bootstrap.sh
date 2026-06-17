@@ -116,6 +116,20 @@ log "Installing mise runtimes (node, go, python + LSPs)"
 run mise trust "$HOME/.config/mise/config.toml" || true
 run mise install || note "mise install had failures — re-run 'mise install' later"
 
+# --- 6b. Browser automation: Chromium + Playwright -------------------------
+# Installs a Chromium build plus every headless system library, used by BOTH
+# the chrome-devtools MCP and Playwright. The browser lands in the user's
+# ~/.cache/ms-playwright; --with-deps installs the shared libs via apt (sudo).
+log "Installing Playwright + Chromium (+ headless system deps)"
+export PATH="$HOME/.local/share/mise/shims:$PATH"   # node/npx from mise
+run npx --yes playwright@latest install --with-deps chromium
+# Optional: a system Chrome at a predictable /usr/bin path, for tools that
+# can't be pointed at the Playwright Chromium. Uncomment if your chrome-devtools
+# MCP doesn't auto-find a browser:
+#   curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+#   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+#   sudo apt-get update && sudo apt-get install -y google-chrome-stable
+
 # --- 7. Default shell ------------------------------------------------------
 log "Setting fish as the default shell"
 FISH_BIN="$(command -v fish)"
