@@ -78,7 +78,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # --- 3. CLI tools (the portable subset of the Mac Brewfile) ----------------
 log "Installing CLI tools via brew"
 run brew install \
-  git git-delta git-lfs gh lazygit neovim fish atuin starship tmux \
+  git git-delta git-lfs gh lazygit jj neovim fish atuin starship tmux \
   ripgrep fd fzf sk zoxide ast-grep bat eza tree yazi fastfetch btop \
   mise jq coreutils libpq pgcli todo-txt
 run brew install anomalyco/tap/opencode || note "opencode tap failed — install later"
