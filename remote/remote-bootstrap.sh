@@ -176,7 +176,7 @@ cat <<'EOF'
 
   1. Restart your shell:            exec fish
   2. Bring up Tailscale + SSH:      sudo tailscale up --ssh
-  3. Lock the firewall to tailnet:  sudo ufw allow in on tailscale0
+  3. Lock the firewall to tailnet:  sudo ufw allow in on tailscale0   # also lets mosh UDP (60000-61000) through
                                      sudo ufw allow 41641/udp      # tailscale
                                      sudo ufw --force enable        # (keep an SSH session open!)
   4. Shell history sync:            atuin login
@@ -184,6 +184,13 @@ cat <<'EOF'
   6. GitHub auth (manual):          gh auth login     # or forward your 1Password SSH agent
   7. Fix Ghostty terminfo — run this ONCE FROM YOUR MAC:
        infocmp -x xterm-ghostty | ssh <droplet> -- tic -x -
+  8. Mosh from a phone/tablet (Blink, Moshi, etc.)? Mosh CANNOT bootstrap through
+     Tailscale SSH, so give the OS sshd a tailnet-only port 2222 and use key auth.
+     (ssh is socket-activated on Ubuntu 24.04, so the port lives in the socket, not
+     sshd_config.) Run as root:
+       sudo bash -c 'install -d /etc/systemd/system/ssh.socket.d; printf "[Socket]\nListenStream=\nListenStream=22\nListenStream=%s:2222\n" "$(tailscale ip -4)" > /etc/systemd/system/ssh.socket.d/port2222.conf; systemctl daemon-reload; systemctl restart ssh.socket'
+     Then add the client's PUBLIC key to ~/.ssh/authorized_keys (password auth is
+     off), and point the app at port 2222 with mosh-server /usr/bin/mosh-server.
 
   Work box? Do work auth/VPN/registries here by hand, and keep work config in a
   private overlay repo run via:  bash remote/remote-bootstrap.sh --work <org/repo>

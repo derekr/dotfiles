@@ -24,6 +24,13 @@ mise activate fish | source
 # Tmux sessionizer (same Ctrl-F binding as the Mac setup)
 bind \cf tmux-sessionizer
 
+# Absorb terminal focus-tracking events (^[[I / ^[[O) that otherwise leak onto
+# the prompt as literal text under mosh on phone clients (Blink, Moshi, etc.).
+# fish only binds these when the terminal advertises focus support via terminfo,
+# which mosh doesn't — so bind them to no-ops to swallow them.
+bind \e\[I ''
+bind \e\[O ''
+
 # --- Git abbreviations (mirror the Mac config) -----------------------------
 abbr --add am 'git amend'
 abbr --add gbr 'git br'
