@@ -102,6 +102,7 @@ if [[ $DRY -eq 0 ]]; then
   copy "$DOTFILES_DIR/git/config"             "$HOME/.config/git/config"
   copy "$DOTFILES_DIR/lazygit/config.yml"     "$HOME/.config/lazygit/config.yml"
   copy "$DOTFILES_DIR/nvim/init.lua"          "$HOME/.config/nvim/init.lua"
+  copy "$DOTFILES_DIR/nvim/nvim-pack-lock.json" "$HOME/.config/nvim/nvim-pack-lock.json"
   copy "$DOTFILES_DIR/mise/config.toml"       "$HOME/.config/mise/config.toml"
   # Mac uses Zed; on the remote box nvim is the editor.
   sed -i 's/zed-preview/nvim/' "$HOME/.config/mise/config.toml"

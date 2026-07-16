@@ -43,6 +43,7 @@ copy_file "$DOTFILES/mise/config.toml"                            ~/.config/mise
 
 # nvim
 copy_file "$DOTFILES/nvim/init.lua"                               ~/.config/nvim/init.lua
+copy_file "$DOTFILES/nvim/nvim-pack-lock.json"                    ~/.config/nvim/nvim-pack-lock.json
 
 # bin
 copy_file "$DOTFILES/bin/tmux-sessionizer"                        ~/.local/bin/tmux-sessionizer

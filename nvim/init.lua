@@ -32,10 +32,27 @@ vim.keymap.set('n', '<leader>h', pick(MiniPick.builtin.help), { desc = 'Help' })
 vim.keymap.set('n', '<leader>/', MiniExtra.pickers.history, { desc = 'Search history' })
 
 -- LSP
-vim.lsp.config['ts_ls'] = {
-  cmd = { 'typescript-language-server', '--stdio' },
+
+-- TypeScript / JavaScript — native TS 7 server (typescript-go).
+-- `typescript@7` is the Go port: it ships no tsserver.js, so the classic
+-- `typescript-language-server` is dead here. The native binary embeds its own
+-- LSP, launched via `tsc --lsp -stdio` (mise keeps `tsc` pointed at the install).
+local ts_inlay_hints = {
+  parameterNames = { enabled = 'all', suppressWhenArgumentMatchesName = false },
+  parameterTypes = { enabled = true },
+  variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+  propertyDeclarationTypes = { enabled = true },
+  functionLikeReturnTypes = { enabled = true },
+  enumMemberValues = { enabled = true },
+}
+vim.lsp.config['tsgo'] = {
+  cmd = { 'tsc', '--lsp', '-stdio' },
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
   root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
+  settings = {
+    typescript = { inlayHints = ts_inlay_hints },
+    javascript = { inlayHints = ts_inlay_hints },
+  },
 }
 
 vim.lsp.config['lua_ls'] = {
@@ -67,18 +84,52 @@ vim.lsp.config['taplo'] = {
   root_markers = { '.git' },
 }
 
-vim.lsp.enable({ 'ts_ls', 'lua_ls', 'dockerls', 'yamlls', 'taplo' })
+vim.lsp.enable({ 'tsgo', 'lua_ls', 'dockerls', 'yamlls', 'taplo' })
 
--- Completion & inlay hints
-vim.opt.completeopt = { 'menuone', 'popup' }
+-- Diagnostics UI (virtual_text is off by default in 0.11+)
+vim.diagnostic.config({
+  severity_sort = true,
+  virtual_text = { prefix = '●', spacing = 2 },
+  float = { border = 'rounded', source = true },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = 'E',
+      [vim.diagnostic.severity.WARN] = 'W',
+      [vim.diagnostic.severity.INFO] = 'I',
+      [vim.diagnostic.severity.HINT] = 'H',
+    },
+  },
+})
+
+-- Completion, inlay hints & per-buffer LSP keymaps
+vim.opt.completeopt = { 'menuone', 'popup', 'noselect' }
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-      if client:supports_method('textDocument/inlayHint') then
-        vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
-      end
+    if not client then return end
+
+    -- autotrigger completion (accept with <C-y>, next/prev with <C-n>/<C-p>)
+    vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    if client:supports_method('textDocument/inlayHint') then
+      vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+    end
+
+    local map = function(keys, fn, desc)
+      vim.keymap.set('n', keys, fn, { buffer = ev.buf, desc = 'LSP: ' .. desc })
+    end
+    -- Note: 0.11+ ships defaults already — grn (rename), gra (code action),
+    -- grr (references), gri (implementation), gO (document symbol), K (hover),
+    -- <C-s> signature help (insert), [d / ]d (prev/next diagnostic).
+    map('gd', vim.lsp.buf.definition, 'Go to definition')
+    map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+    map('<leader>o', function() MiniExtra.pickers.lsp({ scope = 'document_symbol' }) end, 'Document symbols')
+    map('<leader>d', vim.diagnostic.open_float, 'Line diagnostics')
+    map('<leader>q', vim.diagnostic.setloclist, 'Diagnostics to loclist')
+    map('<leader>th', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }), { bufnr = ev.buf })
+    end, 'Toggle inlay hints')
+    if client:supports_method('textDocument/formatting') then
+      map('<leader>F', function() vim.lsp.buf.format({ async = true }) end, 'Format buffer')
     end
   end,
 })
